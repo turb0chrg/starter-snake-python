@@ -65,8 +65,6 @@ def move():
     #     print ( x["name"]  )
     #     print ( "shouts" )
     #     print ( x["shout"] )
-
-    logging.warning('And this, too')
     
     #Useful board dynamic references 
     height = data["board"]["height"] - 1
@@ -87,26 +85,50 @@ def move():
     #Deal with collisions
     for segment in body:
         if (head["x"] == segment["x"] + 1 and head["y"] == segment["y"]): #segment left of head 
-            direction.remove("left")
+            try:
+                direction.remove("left")
+            except:
+                pass        
         if (head["x"] == segment["x"] - 1 and head["y"] == segment["y"]): #segment right of head
-            direction.remove("right")
+            try:
+                direction.remove("right")
+            except:
+                pass
         if (head["y"] == segment["y"] + 1 and head["x"] == segment["x"]): #segment up from head
-            direction.remove("up")
+            try:
+                direction.remove("up")
+            except:
+                pass        
         if (head["y"] == segment["y"] - 1 and head["x"] == segment["x"]): #segment down from head
-            direction.remove("down")
+            try:
+                direction.remove("down")
+            except:
+                pass
 
     #Deal with walls (doesn't deal with corner cases)
     if head["x"] == 0: #left board
-        direction.remove("left")
+        try: 
+            direction.remove("left")
+        except:
+            pass
     
     if head["x"] == width: #right board
-        direction.remove("right")
+        try: 
+            direction.remove("right")
+        except:
+            pass
     
     if head["y"] == 0: #top board
-        direction.remove("up")
+        try: 
+            direction.remove("up")
+        except:
+            pass
     
     if head["y"] == height: #bottom board
-        direction.remove("down")
+        try: 
+            direction.remove("down")
+        except:
+            pass
     
     print ( direction )
     
